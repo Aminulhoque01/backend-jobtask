@@ -1,11 +1,12 @@
 import {Request, Response } from "express";
-import usersServeice from "./users.serveice";
+import { UserServices } from "./users.serveice";
+
 
 
 const createUser = async(req:Request,res:Response)=>{
     try {
         const {user} = req.body;
-        const result = await usersServeice.createUser(user);
+        const result = await UserServices.createUser(user);
         res.status(200).json({
             success: true,
             message:'user created successfully',
@@ -20,6 +21,6 @@ const createUser = async(req:Request,res:Response)=>{
     }
 }
 
-export default {
+export const UsersController ={
     createUser
 };
