@@ -36,7 +36,7 @@ const getAllUser = catchAsync(
     sendResponse<IUser[]>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'cow retirieved successfully',
+      message: 'user retirieved successfully',
       meta: result.meta,
       data: result.data,
     })

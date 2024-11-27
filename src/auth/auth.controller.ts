@@ -8,6 +8,7 @@ import { AuthService } from './auth.service';
 import { IUser } from '../app/modules/users/users.interface';
 import sendResponse from '../sheard/sendResponce';
 import catchAsync from '../sheard/cathAsync';
+import config from '../config';
 
 
 const createUser = catchAsync(

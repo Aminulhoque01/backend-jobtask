@@ -93,6 +93,7 @@ const getSingleUser = async (id: string): Promise<IUser | null> => {
   const result = await User.findById(id)
   return result
 }
+
 const updateUser = async (
   id: string,
   payload: Partial<IUser>
