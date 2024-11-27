@@ -14,6 +14,7 @@ import { jwtHelpers } from '../../../helpers/jwtHelpers'
 import { IGenericResponse } from '../../../interfaces/common'
 import { Admin } from './admin.model'
 import ApiError from '../../../error/apiError'
+import { ILoginUser, ILoginUserResponse } from '../../../auth/auth.interface'
 
 const createAdmin = async (user: IAdmin): Promise<IAdmin | null> => {
   if (!user.password) {
@@ -147,14 +148,14 @@ const loginAdmin = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
 
   const { phoneNumber: userId, role, needsPasswordChange } = isUserExist;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const accessToken = jwtHelpers.creteToken(
+  const accessToken = jwtHelpers.createToken(
     { userId, role },
     config.jwt.secret as Secret,
     config.jwt.expires_in as string
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const refreshToken = jwtHelpers.creteToken(
+  const refreshToken = jwtHelpers.createToken(
     { userId, role },
     config.jwt.refresh_secret as Secret,
     config.jwt.refresh_expires_in as string

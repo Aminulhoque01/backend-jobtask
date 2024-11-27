@@ -10,6 +10,7 @@ const userSchema = new Schema<IUser>({
   },
   role:{
     type:String,
+    enum:["admin","user"],
     required:true,
   },
   password:{
@@ -19,7 +20,10 @@ const userSchema = new Schema<IUser>({
   },
   
 },{
-    timestamps:true
+    timestamps:true,
+    toJSON: {
+      virtuals: true,
+    },
 })
 
 export const User = model<IUser, UserModel>("user", userSchema);
